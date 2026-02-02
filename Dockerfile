@@ -1,9 +1,10 @@
-FROM node
+FROM node:20-alpine
 WORKDIR /app
-
+COPY ./package*.json ./
+RUN npm install npm install express axios ejs 
 COPY . .
-EXPOSE 3000
+EXPOSE 5000
 
 COPY package*.json ./
 
-ENTRYPOINT start npm
+CMD [ "npm" , "start" ]
