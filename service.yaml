@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: node-test-app-service
+  namespace: node-ns
+spec:
+  type: NodePort
+  selector:
+    app: node-test-app
+  ports:
+    - protocol: TCP
+      nodePort: 30000
+      port: 80
+      targetPort: 5000
