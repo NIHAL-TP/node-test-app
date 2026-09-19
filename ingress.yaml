@@ -14,4 +14,4 @@ spec:
               service:
                 name: node-test-app-service
                 port:
-                  number: 8080
+                  number: 80
