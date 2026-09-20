@@ -8,8 +8,7 @@ VCLUSTER_NAMESPACE="vcluster-pr-${PR_NUMBER}"
 APP_NAMESPACE="node-ns"
 KUBECONFIG_SECRET_NAME="vc-${VCLUSTER_NAME}"
 KUBECONFIG_PATH="./kubeconfig-${KUBECONFIG_SECRET_NAME}.yaml"
-kubectl create namespace $VCLUSTER_NAMESPACE
-vcluster create $VCLUSTER_NAME -n $VCLUSTER_NAMESPACE -f vcluster.yaml --upgrade --connect=false
+vcluster create $VCLUSTER_NAME -n "${VCLUSTER_NAMESPACE}" -f vcluster.yaml --upgrade --connect=false
 kubectl wait --for=condition=ready pod -l app=vcluster,release=$VCLUSTER_NAME -n $VCLUSTER_NAMESPACE --timeout=120s
 echo "${VCLUSTER_NAME} vcluster created successfully."
 
