@@ -5,19 +5,19 @@ metadata:
 rules:
   - apiGroups: ["apps"]
     resources: ["deployments","statefulsets"]
-    verbs: ["create","get","update","delete","list","watch"]
+    verbs: ["create","get","update","delete","list","watch","patch","deletecollection"]
 
   - apiGroups: [""]
     resources: ["services","configmaps","namespaces","secrets","serviceaccounts","persistentvolumeclaims"]
-    verbs: ["create","get","update","delete","list","watch"]
+    verbs: ["create","get","update","delete","list","watch","patch","deletecollection"]
 
   - apiGroups: ["networking.k8s.io"]
     resources: ["ingresses"]
-    verbs: ["create","get","update","delete","list","watch"]
+    verbs: ["create","get","update","delete","list","watch","patch","deletecollection"]
   
   - apiGroups: ["rbac.authorization.k8s.io"]
     resources: ["roles","rolebindings","clusterroles","clusterrolebindings"]
-    verbs: ["create","get","update","list","delete","watch"]
+    verbs: ["create","get","update","list","delete","watch","patch","deletecollection"]
 
 ---
 kind: ClusterRoleBinding
