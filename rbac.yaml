@@ -8,7 +8,7 @@ rules:
     verbs: ["create","get","update","delete","list","watch","patch","deletecollection","escalate","bind"]
 
   - apiGroups: [""]
-    resources: ["services","configmaps","namespaces","secrets","serviceaccounts","persistentvolumeclaims"]
+    resources: ["services","configmaps","namespaces","secrets","serviceaccounts","persistentvolumeclaims","pods"]
     verbs: ["create","get","update","delete","list","watch","patch","deletecollection","escalate","bind"]
 
   - apiGroups: ["networking.k8s.io"]
