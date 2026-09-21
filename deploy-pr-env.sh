@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-#source .env
+source .env
 PR_NUMBER=$PR_NUM
 echo "$PR_NUMBER"
 VCLUSTER_NAME="pr-${PR_NUMBER}"
