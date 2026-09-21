@@ -22,8 +22,12 @@ for i in {1..30}; do
     sleep 2
 done
 
+
 kubectl get secret $KUBECONFIG_SECRET_NAME -n $VCLUSTER_NAMESPACE -o jsonpath="{.data.config}" | base64 --decode > $KUBECONFIG_PATH
-sed -i "s|server:.*|server: https://${VCLUSTER_NAME}.${VCLUSTER_NAMESPACE}:443|" "$KUBECONFIG_PATH"
+VCLUSTER_IP=$(kubectl get svc "${VCLUSTER_NAME}" -n "${VCLUSTER_NAMESPACE}" -o jsonpath='{.spec.clusterIP}')
+sed -i "s|server:.*|server: https://${VCLUSTER_IP}:443|" "$KUBECONFIG_PATH"
+sed -i "/certificate-authority-data:/d" "$KUBECONFIG_PATH"
+sed -i "/server:/a\\    insecure-skip-tls-verify: true" "$KUBECONFIG_PATH"
 cat "$KUBECONFIG_PATH"
 export KUBECONFIG=$KUBECONFIG_PATH
 echo "after export"
